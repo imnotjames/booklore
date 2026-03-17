@@ -148,14 +148,6 @@ public class FileService {
         return Paths.get(appProperties.getPathConfig(), "bookdrop_temp", bookdropFileId + ".jpg").toString();
     }
 
-    public String getToolsKepubifyPath() {
-        return Paths.get(appProperties.getPathConfig(), "tools", "kepubify").toString();
-    }
-
-    public String getToolsFfprobePath() {
-        return Paths.get(appProperties.getPathConfig(), "tools", "ffprobe").toString();
-    }
-
 
     // ========================================
     // VALIDATION
