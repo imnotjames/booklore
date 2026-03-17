@@ -19,7 +19,6 @@ Organize, read, annotate, sync across devices, and share, all without relying on
   <a href="https://hub.docker.com/r/booklore/booklore"><img src="https://img.shields.io/docker/pulls/booklore/booklore?color=2496ED&style=flat-square&logo=docker&logoColor=white" alt="Docker Pulls" /></a>
   <a href="https://github.com/booklore-app/booklore/stargazers"><img src="https://img.shields.io/github/stars/adityachandelgit/BookLore?style=flat-square&color=ffd43b" alt="Stars" /></a>
   <a href="https://discord.gg/Ee5hd458Uz"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" /></a>
-  <a href="https://opencollective.com/booklore"><img src="https://img.shields.io/opencollective/all/booklore?style=flat-square&color=7FADF2&logo=opencollective" alt="Open Collective" /></a>
   <a href="https://hosted.weblate.org/engage/booklore/"><img src="https://img.shields.io/weblate/progress/booklore?style=flat-square&logo=weblate&logoColor=white&color=2ECCAA" alt="Translate" /></a>
 </p>
 
@@ -233,12 +232,7 @@ BookLore is free, open source, and built with care. Here's how you can give back
 | Action | How |
 |:---|:---|
 | ⭐ **Star this repo** | It's the simplest way to help others find BookLore |
-| 💰 **Sponsor development** | [Open Collective](https://opencollective.com/booklore) funds hosting, testing, and new features |
 | 📢 **Tell someone** | Share BookLore with a friend, a subreddit, or your local book club |
-
-> [!IMPORTANT]
-> We're raising funds for a Kobo device to build and test native Kobo sync support.
-> [Contribute to the Kobo Bounty →](https://opencollective.com/booklore/projects/kobo-device-for-testing)
 
 ---
 
@@ -273,48 +267,6 @@ BookLore is used by readers around the world. Help make it accessible in your la
 [![Contributors](https://contrib.rocks/image?repo=adityachandelgit/BookLore)](https://github.com/booklore-app/booklore/graphs/contributors)
 
 Every contribution matters. [See how you can help →](CONTRIBUTING.md)
-
----
-
-<div align="center">
-
-## 🌟 Sponsors & Partners
-
-<table>
-<tr>
-<td align="center" width="33%">
-
-<a href="https://www.pikapods.com/pods?run=booklore">
-  <img src="https://www.pikapods.com/static/run-button.svg" alt="Run on PikaPods" height="40" />
-</a>
-
-**PikaPods**
-
-</td>
-<td align="center" width="33%">
-
-<a href="https://docs.elfhosted.com/app/booklore">
-  <img src="https://docs.elfhosted.com/images/logo.svg" alt="ElfHosted" height="40" />
-</a>
-
-**ElfHosted**
-
-</td>
-<td align="center" width="34%">
-
-<a href="https://jb.gg/OpenSource">
-  <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" alt="JetBrains" height="40" />
-</a>
-
-**JetBrains**
-
-</td>
-</tr>
-</table>
-
-*Want your logo here? [Become a sponsor →](https://opencollective.com/booklore)*
-
-</div>
 
 ---
 
