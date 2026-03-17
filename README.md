@@ -14,23 +14,6 @@ Organize, read, annotate, sync across devices, and share, all without relying on
 </p>
 
 <p align="center">
-  <a href="https://github.com/booklore-app/booklore/releases"><img src="https://img.shields.io/github/v/release/adityachandelgit/BookLore?color=818CF8&style=flat-square&logo=github" alt="Release" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/adityachandelgit/BookLore?color=fab005&style=flat-square" alt="License" /></a>
-  <a href="https://hub.docker.com/r/booklore/booklore"><img src="https://img.shields.io/docker/pulls/booklore/booklore?color=2496ED&style=flat-square&logo=docker&logoColor=white" alt="Docker Pulls" /></a>
-  <a href="https://github.com/booklore-app/booklore/stargazers"><img src="https://img.shields.io/github/stars/adityachandelgit/BookLore?style=flat-square&color=ffd43b" alt="Stars" /></a>
-  <a href="https://discord.gg/Ee5hd458Uz"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" /></a>
-  <a href="https://hosted.weblate.org/engage/booklore/"><img src="https://img.shields.io/weblate/progress/booklore?style=flat-square&logo=weblate&logoColor=white&color=2ECCAA" alt="Translate" /></a>
-</p>
-
-<p align="center">
-  <a href="https://booklore.org/">🌐 Website</a> ·
-  <a href="https://booklore.org/docs/getting-started">📖 Docs</a> ·
-  <a href="#-live-demo">🎮 Demo</a> ·
-  <a href="#-quick-start">🚀 Quick Start</a> ·
-  <a href="https://discord.gg/Ee5hd458Uz">💬 Discord</a>
-</p>
-
-<p align="center">
   <img src="assets/demo.gif" alt="BookLore Demo" width="800" />
 </p>
 
@@ -52,9 +35,6 @@ Organize, read, annotate, sync across devices, and share, all without relying on
 
 ## 🚀 Quick Start
 
-> [!TIP]
-> Looking for OIDC setup, advanced config, or upgrade guides? See the [full documentation](https://booklore.org/docs/getting-started).
-
 All you need is [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
 <details>
@@ -62,10 +42,7 @@ All you need is [Docker](https://docs.docker.com/get-docker/) and [Docker Compos
 
 | Registry | Image |
 |----------|-------|
-| Docker Hub | `booklore/booklore` |
-| GitHub Container Registry | `ghcr.io/booklore-app/booklore` |
-
-> Legacy images at `ghcr.io/adityachandelgit/booklore-app` remain available but won't receive updates.
+| GitHub Container Registry | `ghcr.io/imnotjames/booklore` |
 
 </details>
 
@@ -101,8 +78,7 @@ Create a `docker-compose.yml`:
 ```yaml
 services:
   booklore:
-    image: booklore/booklore:latest
-    # Alternative: ghcr.io/booklore-app/booklore:latest
+    image: ghcr.io/imnotjames/booklore:latest
     container_name: booklore
     environment:
       - USER_ID=${APP_USER_ID}
@@ -169,21 +145,6 @@ If your book files live on network storage, set `DISK_TYPE=NETWORK` in your `.en
 
 ---
 
-## 🎮 Live Demo
-
-See BookLore in action before deploying your own instance.
-
-| | |
-|:---|:---|
-| 🌐 **URL** | **[demo.booklore.org](https://demo.booklore.org)** |
-| 👤 **Username** | `booklore` |
-| 🔑 **Password** | `9HC20PGGfitvWaZ1` |
-
-> [!NOTE]
-> This is a standard user account. Admin features like library creation, user management, and system settings are only available on your own instance.
-
----
-
 ## 📥 BookDrop: Zero-Effort Import
 
 Drop book files into a folder. BookLore picks them up, pulls metadata, and queues everything for your review.
@@ -215,56 +176,16 @@ volumes:
 
 | | |
 |:---|:---|
-| 🐞 **Something not working?** | [Report a Bug](https://github.com/booklore-app/booklore/issues/new?template=bug_report.yml) |
-| 💡 **Got an idea?** | [Request a Feature](https://github.com/booklore-app/booklore/issues/new?template=feature_request.yml) |
+| 🐞 **Something not working?** | [Report a Bug](https://github.com/imnotjames/booklore/issues/new?template=bug_report.yml) |
+| 💡 **Got an idea?** | [Request a Feature](https://github.com/imnotjames/booklore/issues/new?template=feature_request.yml) |
 | 🛠️ **Want to help build?** | [Contributing Guide](CONTRIBUTING.md) |
-| 💬 **Come hang out** | [Discord Server](https://discord.gg/Ee5hd458Uz) |
 
 > [!WARNING]
 > **Before opening a PR:** Open an issue first and get maintainer approval. PRs without a linked issue, without screenshots/video proof, or without pasted test output will be closed. All code must follow project [backend](CONTRIBUTING.md#backend-conventions) and [frontend](CONTRIBUTING.md#frontend-conventions) conventions. AI-assisted contributions are welcome, but you must run, test, and understand every line you submit. See the [Contributing Guide](CONTRIBUTING.md) for full details.
 
 ---
 
-## 💜 Support BookLore
-
-BookLore is free, open source, and built with care. Here's how you can give back:
-
-| Action | How |
-|:---|:---|
-| ⭐ **Star this repo** | It's the simplest way to help others find BookLore |
-| 📢 **Tell someone** | Share BookLore with a friend, a subreddit, or your local book club |
-
----
-
-## 🌍 Translations
-
-BookLore is used by readers around the world. Help make it accessible in your language on [Weblate](https://hosted.weblate.org/engage/booklore/).
-
-<a href="https://hosted.weblate.org/engage/booklore/">
-  <img src="https://hosted.weblate.org/widget/booklore/multi-auto.svg?v=1" alt="Translation status" />
-</a>
-
----
-
-## 📊 Project Analytics
-
-![Repository Activity](https://repobeats.axiom.co/api/embed/44a04220bfc5136e7064181feb07d5bf0e59e27e.svg)
-
-### ⭐ Star History
-
-<a href="https://www.star-history.com/#booklore-app/booklore&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=booklore-app/booklore&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=booklore-app/booklore&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=booklore-app/booklore&type=date&legend=top-left" width="600" />
- </picture>
-</a>
-
----
-
 ## 👥 Contributors
-
-[![Contributors](https://contrib.rocks/image?repo=adityachandelgit/BookLore)](https://github.com/booklore-app/booklore/graphs/contributors)
 
 Every contribution matters. [See how you can help →](CONTRIBUTING.md)
 
@@ -274,14 +195,8 @@ Every contribution matters. [See how you can help →](CONTRIBUTING.md)
 
 While BookLore is open source and its API is accessible, it is not designed or maintained as a stable integration point. Endpoints are undocumented, unversioned, and may change or break at any time without notice. No compatibility guarantees or support are provided for third-party use.
 
-<div align="center">
-
 ## ⚖️ License
 
 **GNU Affero General Public License v3.0**
 
-Copyright 2024–2026 BookLore
-
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/agpl-3.0.html)
-
-</div>
