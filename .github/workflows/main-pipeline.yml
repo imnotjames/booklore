@@ -1,9 +1,9 @@
-name: Master - Build, Tag, Push, and Release
+name: Build, Tag, Push
 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   get-base-ref:
@@ -161,12 +161,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Authenticate to Docker Hub
-        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Authenticate to GitHub Container Registry
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
@@ -317,17 +311,3 @@ jobs:
           cache-to: |
             type=gha,mode=max
             type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
-
-      - name: Update GitHub Release Draft
-        uses: release-drafter/release-drafter@6db134d15f3909ccc9eefd369f02bd1e9cffdf97 # v6
-        with:
-          tag: ${{ env.new_tag }}
-          name: "Release ${{ env.new_tag }}"
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-
-      - name: Publish GitHub Draft Release
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          gh release edit ${{ env.new_tag }} --draft=true
