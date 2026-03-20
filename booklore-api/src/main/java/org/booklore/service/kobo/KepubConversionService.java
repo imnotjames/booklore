@@ -1,23 +1,30 @@
 package org.booklore.service.kobo;
 
+import org.booklore.util.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 public class KepubConversionService {
+
+    @Autowired
+    private FileService fileService;
+
     public File convertEpubToKepub(File epubFile, File tempDir, boolean forceEnableHyphenation) throws IOException, InterruptedException {
         validateInputs(epubFile);
 
-        Path kepubifyBinary = Paths.get("kepubify").toAbsolutePath();
+        Path kepubifyBinary = fileService.findSystemFile("kepubify");
+
+        if (kepubifyBinary == null) {
+            throw new IOException("Kepubify conversion failed: could not find kepubify binary");
+        }
+
         File outputFile = executeKepubifyConversion(epubFile, tempDir, kepubifyBinary, forceEnableHyphenation);
 
         log.info("Successfully converted {} to {} (size: {} bytes)", epubFile.getName(), outputFile.getName(), outputFile.length());

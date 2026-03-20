@@ -148,6 +148,24 @@ public class FileService {
         return Paths.get(appProperties.getPathConfig(), "bookdrop_temp", bookdropFileId + ".jpg").toString();
     }
 
+    public Path findSystemFile(String filename) {
+        // Search first in the application folder's "local" `tools` folders for backwards
+        // compatibility.  If not found in those, then search the system $PATH.
+        String systemSearchPath = System.getenv("PATH");
+        String searchPath = systemSearchPath == null ? "tools" : "tools:".concat(systemSearchPath);
+        String[] searchPaths = searchPath.split(":");
+
+        for (String path : searchPaths) {
+            Path possiblePath = Paths.get(path).resolve(filename).toAbsolutePath();
+
+            if (Files.isRegularFile(possiblePath)) {
+                return possiblePath;
+            }
+        }
+
+        return null;
+    }
+
 
     // ========================================
     // VALIDATION
