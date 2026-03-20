@@ -37,19 +37,20 @@ RUN apk add --no-cache yq && \
 RUN --mount=type=cache,target=/home/gradle/.gradle \
     gradle clean build -x test --no-daemon --parallel
 
-FROM alpine AS kepubify
+FROM scratch AS dependency-kepubify
 
 ARG KEPUBIFY_VERSION="4.0.4"
+ARG KEPUBIFY_AMD64_CHECKSUM="sha256:37d7628d26c5c906f607f24b36f781f306075e7073a6fe7820a751bb60431fc5"
+ARG KEPUBIFY_ARM64_CHECKSUM="sha256:5a15b8f6f6a96216c69330601bca29638cfee50f7bf48712795cff88ae2d03a3"
 
-ADD https://github.com/pgaskin/kepubify/releases/download/v${KEPUBIFY_VERSION}/kepubify-linux-64bit /kepubify-amd64
-ADD https://github.com/pgaskin/kepubify/releases/download/v${KEPUBIFY_VERSION}/kepubify-linux-arm64 /kepubify-arm64
-
-FROM alpine AS ffprobe
-RUN apk update
-RUN apk upgrade
-RUN apk add --no-cache ffmpeg
-
-RUN cp `which ffprobe` /ffprobe
+ADD \
+      --checksum="${KEPUBIFY_AMD64_CHECKSUM}" \
+      --chmod=755 \
+      https://github.com/pgaskin/kepubify/releases/download/v${KEPUBIFY_VERSION}/kepubify-linux-64bit /kepubify-amd64
+ADD \
+      --checksum="${KEPUBIFY_ARM64_CHECKSUM}" \
+      --chmod=755 \
+      https://github.com/pgaskin/kepubify/releases/download/v${KEPUBIFY_VERSION}/kepubify-linux-arm64 /kepubify-arm64
 
 # Stage 3: Final image
 FROM eclipse-temurin:25-jre-alpine
@@ -74,8 +75,8 @@ RUN apk update && apk add --no-cache su-exec libstdc++ libgcc && \
 COPY docker/unrar/unrar-${TARGETARCH} /usr/local/bin/unrar
 RUN chmod 755 /usr/local/bin/unrar
 
-COPY --from=ffprobe /ffprobe /usr/local/bin/ffprobe
-COPY --from=kepubify /kepubify-${TARGETARCH} /usr/local/bin/kepubify
+COPY --from=mwader/static-ffmpeg:8.1 /ffprobe /usr/local/bin/ffprobe
+COPY --from=dependency-kepubify /kepubify-${TARGETARCH} /usr/local/bin/kepubify
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
